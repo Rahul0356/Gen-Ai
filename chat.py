@@ -1,14 +1,13 @@
 from dotenv import load_dotenv
-from openai  import OpenAI
+from openai import OpenAI
 
 load_dotenv()
 
 client = OpenAI()
 
-result = client.chat.completions.create(
-    model="gpt-4",
-    messages=[
-        {"role": "user", "content": "What is the capital of France?"},
-    ]
+response = client.responses.create(
+    model="gpt-4.1-mini",
+    input="What is 2 + 2?"
 )
-print(result.choices[0].message.content)
+
+print(response.output_text)
